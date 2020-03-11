@@ -1,0 +1,15 @@
+const express = require('express');
+const handle = require('./handlers')
+require('dotenv').config()
+const app = express();
+
+app.use(express.json());
+
+const port = process.env.ENV_Port || 5000;
+app.get('/', (req, res) => res.send('hallo'));
+app.use(handle.notFound);
+app.use(handle.error);
+app.listen(port, () => {
+    console.log(`server has been created on ${port}`);
+    
+})
