@@ -12,6 +12,7 @@ app.use(express.json());
 const port = process.env.ENV_Port || 5000;
 app.get('/', (req, res) => res.send('hallo'));
 app.use('/api/auth', routes.auth);
+app.use('/api/poll',routes.poll)
 app.use(handle.notFound);
 app.use(handle.error);
 
