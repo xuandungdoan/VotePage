@@ -35,7 +35,7 @@ const seed = async () => {
         const data = await db.User.create(user);
         await data.save();
       }),
-    );
+    ); 
     console.log('CREATED USERS', JSON.stringify(users));
 
     await Promise.all(

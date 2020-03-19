@@ -56,10 +56,17 @@ exports.deletePoll = async (req, res, next) => {
     const { id: idPoll } = req.params;
     const {id: idUser} = req.decoded
     try {
+        let user = await db.User.findById(idUser)
+        if(user.polls) { // not sure if necessary either...
+          user.polls = user.polls.filter(userPoll => {
+            return userPoll._id.toString() !== idPoll.toString() // not sure if necessary to use toString()
+          })
+        }
         const poll = await db.Poll.findById(idPoll);
         if(!poll) throw new Error('cant find poll');
         if(poll.user.toString() !== idUser) throw new Error('cant delete with wrong user');
-        await poll.remove()
+        await poll.remove();
+        await user.save();
         res.status(202).json(poll)
     } catch (error) {
         next(error)
@@ -105,7 +112,7 @@ exports.vote = async (req, res, next) => {
                 res.status(202).json(poll);
             }
             else{
-                throw new Error('already vote')
+                throw new Error('already voted')
             }
         }
         else{
