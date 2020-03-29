@@ -27,9 +27,9 @@ export const authUser = (path, data) => {
             api.setToken(token);
             dispatch(setCurrentUser({user}));
             dispatch(removeError())
-        } catch (error) {
-            const err = error.response.data.error;
-            dispatch(addError(err))
+        } catch (err) {
+            const error = err.response.data;          
+            dispatch(addError(error.err))
         }
     }
 }
