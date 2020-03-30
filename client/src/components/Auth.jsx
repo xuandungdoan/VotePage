@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {connect} from "react-redux"
-import {authUser, logOut} from "../store/actions"
+import { connect } from "react-redux";
+import { authUser, logOut } from "../store/actions";
+import { withRouter } from "react-router-dom";
 class Auth extends Component {
   constructor(props) {
     super(props);
@@ -14,12 +15,12 @@ class Auth extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
-    const path = this.props.Path;
+    const path = this.props.path;
     const { username, password } = this.state;
-    this.props.authUser(path || 'login', {username, password});
+    this.props.authUser(path || "login", { username, password });
     console.log(username, password);
   };
-  render() {  
+  render() {
     const { username, password } = this.state;
     return (
       <div>
@@ -46,5 +47,4 @@ class Auth extends Component {
     );
   }
 }
-export default connect(() => ({
-}), {authUser, logOut})(Auth) ;
+export default withRouter(connect(() => ({}), { authUser, logOut })(Auth));
