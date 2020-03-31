@@ -1,6 +1,6 @@
 import {SET_CURRENT_POLL, SET_POLLS} from "../actionTypes"
 
-export const setPolls = (state= [], action) => {
+export const polls = (state = [1], action) => {
     switch(action.type){
         case SET_POLLS:
             return action.polls;
@@ -9,7 +9,7 @@ export const setPolls = (state= [], action) => {
     }
 }
 
-export const setCurrentPoll = (state= {}, action) => {
+export const currentPoll = (state= {}, action) => {
     switch(action.type){
         case SET_CURRENT_POLL:
             return action.poll;
