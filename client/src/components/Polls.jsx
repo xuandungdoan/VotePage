@@ -10,14 +10,14 @@ class Polls extends Component {
     const { getPolls } = this.props;
     getPolls();
   }
-  handleClick = id => {
-    const { getCurrentPoll } = this.props;
-    getCurrentPoll(id);
-  }
+  handleSelect = id => {
+    const { history } = this.props;
+    history.push(`/poll/${id}`);
+  };
   render() {
     const { auth, getPolls, getUserPolls } = this.props;
     const polls = this.props.polls.map(poll => (
-      <li onClick={() => this.handleClick(poll._id)} key={poll._id}>
+      <li key={poll._id} onClick={() => this.handleSelect(poll._id)}>
         {poll.question}
       </li>
     ));

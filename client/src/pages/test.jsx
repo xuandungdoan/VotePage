@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import Polls from '../components/Polls'
-const Test = () => {
-    return(
-        <div>
-            <Polls/>
-        </div>
-    )
-}
-export default Test;
+import React, { Component } from "react";
+import Poll from "../components/Poll";
+const TestPage = () => {
+  return (
+    <div>
+      this is test Page
+      {/* <Poll/> */}
+    </div>
+  );
+};
+export default TestPage;

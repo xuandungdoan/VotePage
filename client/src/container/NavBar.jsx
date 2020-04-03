@@ -6,16 +6,19 @@ const NavBar = ({ auth, logOut }) => (
   <div>
     <ul>
       <li>
+        <Link to='/'>Home</Link>
+      </li>
+      <li>
         <Link to="login">Login</Link>
       </li>
       <li>
         <Link to="register">register</Link>
       </li>
       <li>
-        <a onClick={logOut}>logout</a>
-      </li>
-      <li>
          <Link to='test'>Test</Link>
+      </li>
+      <li onClick={logOut}>
+        logout
       </li>
     </ul>
     {auth.isAuth && (
