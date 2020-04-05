@@ -9,7 +9,6 @@ const CreatePollPage = ({ isAuth }) => {
     <div>
       <ErrorMessage />
       <CreatePoll />
-      <p>this is poll page</p>
     </div>
   );
 };
