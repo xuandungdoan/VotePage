@@ -7,10 +7,10 @@ class CreatePoll extends Component {
     super(props);
     this.state = {
       question: "",
-      options: ["", ""]
+      options: ["", ""],
     };
   }
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   addAnwser = () => {
@@ -21,7 +21,7 @@ class CreatePoll extends Component {
     options[index] = e.target.value;
     this.setState({ options });
   };
-  handleSumit = e => {
+  handleSumit = (e) => {
     e.preventDefault();
     this.props.createPoll(this.state);
   };
@@ -30,30 +30,40 @@ class CreatePoll extends Component {
     const options = this.state.options.map((option, index) => {
       return (
         <Fragment key={index}>
-          <label htmlFor="options">Options</label>
+          <label className="form-label" htmlFor="options">
+            Options
+          </label>
           <input
+            className="form-input"
             type="text"
             name="options"
             value={option}
-            onChange={e => this.handleOption(e, index)}
+            onChange={(e) => this.handleOption(e, index)}
           />
         </Fragment>
       );
     });
     return (
-      <form onSubmit={this.handleSumit}>
-        <label htmlFor="question">Question</label>
+      <form className="form" onSubmit={this.handleSumit}>
+        <label className="form-label" htmlFor="question">
+          Question
+        </label>
         <input
+          className="form-input"
           type="text"
           name="question"
           value={this.state.question}
           onChange={this.handleChange}
         />
         {options}
-        <button type="button" onClick={this.addAnwser}>
-          Add Answer
-        </button>
-        <button type="submit">Submit</button>
+        <div className="button_center">
+          <button className="button" type="button" onClick={this.addAnwser}>
+            Add Answer
+          </button>
+          <button className="button" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     );
   }
